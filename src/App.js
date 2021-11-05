@@ -2,28 +2,35 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { handleInitialData } from './actions/shared';
+import { handleGetUsers } from './actions/shared';
+import { handleGetQuestions } from './actions/shared';
 
 
 
 class App extends Component {
 
     // Upon creation of the Component, dispatch 
-    // the handleInitialData to fetch the users and questions
+    // the handleGetUsers and handleGetQuestions
+    //  to fetch the users and questions
     componentDidMount () {
-    // this.props.dispatch(handleInitialData())
-    console.log('yes');
+    this.props.dispatch(handleGetUsers());
+    this.props.dispatch(handleGetQuestions());
+
     }
 
     render() {
         return (
             <div>
-                
+                app
             </div>
         )
     }
 }
 
+function mapStateToProps () {
+    return {
+    //   loading: authedUser === null
+    }
+    }
 
-
-export default App;
+export default connect(mapStateToProps)(App);

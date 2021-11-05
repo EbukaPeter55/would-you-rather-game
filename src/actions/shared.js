@@ -1,18 +1,29 @@
-import { getInitialData } from "../utils/api";
+import { _getQuestions, _getUsers } from "../utils/_DATA";
 import { getUsers } from "./users";
 import { getQuestions } from "./questions";
 
 
+const AUTHED_ID = 'tylermcginnis'
 
-// action creator Using redux thunk middleware
-export function handleInitialData () {
 
+
+// action creator Using redux thunk middleware to get Users
+export function handleGetUsers () {
     return (dispatch) => {
-        return getInitialData()
-        .then(({users, questions}) => {
+        return _getUsers()
+        .then((users) => {
             dispatch(getUsers(users));
-            dispatch(getQuestions(questions));
-            // dispatch(setAuthedUser(AUTHED_ID));
         })
     }
 };
+
+// action creator Using redux thunk middleware to get Questions
+export function handleGetQuestions () {
+    return (dispatch) => {
+        return _getQuestions()
+        .then((questions) => {
+            dispatch(getQuestions(questions));
+        })
+    }
+};
+

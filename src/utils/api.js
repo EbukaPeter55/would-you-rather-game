@@ -15,3 +15,10 @@ import {
       questions
     }))
   };
+  export function getQuestionsData () {
+    return Promise.all([
+      _getQuestions
+    ]).then(([questions]) => ({
+      questions
+    }))
+  };
