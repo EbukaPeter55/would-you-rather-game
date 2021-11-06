@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleGetUsers } from './actions/shared';
 import { handleGetQuestions } from './actions/shared';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Leaderboard from './pages/Leaderboard';
 
 
 
@@ -20,9 +23,23 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                app
-            </div>
+            <Router>
+            <Fragment>
+        {/*<LoadingBar/>*/}
+                <div className="container">
+               {/*<Nav/>*/}
+              {/* If authedUser is null, display null, else render 
+              the dashboard*/}
+             
+                <div>
+                <Route path='/' exact component={Home} />
+                <Route path='/login' exact component={Login} />
+                <Route path='/leaderboard' exact component={Leaderboard} />                
+                </div>
+              
+                </div>
+                </Fragment>          
+             </Router>
         )
     }
 }
