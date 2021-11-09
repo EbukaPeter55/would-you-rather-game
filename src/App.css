@@ -18,3 +18,32 @@
   height: 25vh;
   margin: 0 auto;
 }
+
+/* LOGIN STYLE */
+section .card-main {
+  width: 40%;
+  height: 60vh;
+  margin-left: 30%;
+} 
+section .card-main img {
+  width: 10rem;
+  height: 6rem;
+  margin: 0 auto;
+}
+section .card-main h2,
+section .card-main .top-heading h5,
+section .card-main .top-heading p{
+  text-align: center;
+}
+section .card-main form .form-group select {
+  min-width: 21rem;
+  height: 2.5rem;
+  margin-left: 12%;
+  outline: none;
+}
+section .card-main form button[type="submit"]{
+  min-width: 21rem;
+  height: 3rem;
+  margin-left: 12%;
+  margin-top: 3%;
+}

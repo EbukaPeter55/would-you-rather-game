@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 class Nav extends Component {
 
     render() {
-      // https://www.dimensionscareers.org.uk/referencerequesting/employerreferencerequest/?q=803c7fa5-4b65-4670-a7d0-843d18dbd31e&r=19b92e5e-a823-4cb5-94ce-8dba34c26c44
         return (
             <header>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -29,10 +28,10 @@ class Nav extends Component {
      <Link className="nav-link " to='/leaderboard'>Leaderboard</Link>
      </li>
      <li className="nav-item">
-     <Link className="nav-link ">Hello Sarah!</Link>
+     <Link className="nav-link " to="#">Hello Sarah!</Link>
      </li>
      <li className="nav-item">
-     <Link className="nav-link">avatar image here</Link>
+     <Link className="nav-link" to="#">avatar image here</Link>
      </li>
      <li className="nav-item">
      <Link className="nav-link " to='#'>Messages</Link>

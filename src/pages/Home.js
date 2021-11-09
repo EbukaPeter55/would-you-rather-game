@@ -1,18 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect, useSelector } from 'react-redux';
 import Nav from '../components/Nav';
-import Tab from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tabs';
+import { PropTypes } from "prop-types";
 
 
 
-class Home extends Component {
 
-    render() {
-const { questions } = this.props;
-console.log(questions);
+
+const Home = ({questions}) => {
+    // const { questions } = this.props;
+    console.log(questions);
+
+
         return (
             <section>
             <Nav/>
+            {
+             Object.keys(questions).map(question => (
+                 <li>{question}</li>
+             ))
+            }
                 <div className="card card-wrap">
                 <Tab defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3 unique-tab">
                 <Tab eventKey="home" title="Unanswered questions">
@@ -30,12 +38,12 @@ console.log(questions);
                 </div>
             </section>
         )
-    }
 }
 
-const mapStateToProps = ({questions}, props) => {
+const mapStateToProps = ({questions, users}, props) => {
 return {
-    questions : questions
+    questions,
+    users
 }
 }
 
