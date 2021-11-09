@@ -4,9 +4,13 @@ import Nav from '../components/Nav';
 import Logo from '../assets/images/reactjs.jpeg';
 import { selectUsersWithSomeInfo } from '../selectors';
 import Select from 'react-select';
+import { setAuthedUser } from '../actions/authedUser';
+import { useHistory } from 'react-router';
 
 
-const Login = ({users}) => {
+const Login = ({dispatch, users}) => {
+    const [userId, setUserId] = useState("");
+    const history = useHistory();
 
         console.log(users);
         const optionsValue = Object.keys(users).map(id => ({
@@ -15,9 +19,24 @@ const Login = ({users}) => {
             <span>{users[id].name}</span></>
         }));
 
-        // handleChange(){
-            
-        // }
+        // Our handleChange function sets the userId to the 
+        // new Id selected from the form user field
+      const handleChange = (id) => {
+            return setUserId(id.value);
+        }
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if(userId){
+            dispatch(setAuthedUser(users[userId]));
+            localStorage.setItem('user', users[userId].name);
+            console.log(users[userId]);
+            // todo: Redirect the user to the homepage
+            history.push('')
+            return;
+        }
+            return "An error occured"
+        }
         return (
             <section>
             <Nav/>
@@ -29,10 +48,10 @@ const Login = ({users}) => {
                 <hr/>
                 <img className="img-fluid" src={Logo} alt="ReactLogo"/>
                 <h2>Login</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                     <Select name="usersValue"
-                    //  onChange={handleChange}
+                     onChange={handleChange}
                      options={optionsValue}   
                     />
                     </div>
