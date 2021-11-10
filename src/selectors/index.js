@@ -3,6 +3,8 @@ import { createSelector } from 'reselect';
 const selectEveryQuestion = state => state.questions;
 const selectEveryUsers = state => state.users;
 
+export const selectAuthenticatedUser = state => state.authedUser;
+
 
 export const questionsById = (id) => createSelector(selectEveryQuestion, (questions) => {
     // initialized unanswered and answered questions into an empty aray
@@ -21,7 +23,7 @@ export const questionsById = (id) => createSelector(selectEveryQuestion, (questi
         answeredQuestions: answeredQuestions.sort((a, b) => b.timestamp - a.timestamp),
         unansweredQuestions: unansweredQuestions.sort((a, b) => b.timestamp - a.timestamp)
     };
-}) ;
+});
 
 export const selectUsersWithSomeInfo = createSelector (selectEveryUsers, (users) => {
     const alteredUsers = Object.keys(users).reduce((acc, cur) => {

@@ -3,10 +3,16 @@
   padding: 0;
 }
 
+/* NAV STYLES */
+li img{
+  width: 2.1875rem;
+  height: 2.1875rem;
+}
 /* HOME STYLES */
 .card-wrap{
   width: 40%;
-  height: 80vh;
+  height: auto;
+  padding-bottom: 1rem;
   margin-left: 30%;
   margin-top: 3%;
 }
@@ -18,7 +24,16 @@
   height: 25vh;
   margin: 0 auto;
 }
-
+.inner-card h5{
+  margin-left: 1rem;
+}
+.inner-card .card-body-content {
+  margin-top: 1rem;
+}
+.inner-card .card-body-content img {
+  width: 4rem;
+  height: 4rem;
+}
 /* LOGIN STYLE */
 section .card-main {
   width: 40%;

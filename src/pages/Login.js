@@ -29,8 +29,10 @@ const Login = ({dispatch, users}) => {
         e.preventDefault();
         if(userId){
             dispatch(setAuthedUser(users[userId]));
-            localStorage.setItem('user', users[userId].name);
-            console.log(users[userId]);
+            localStorage.setItem('userName', users[userId].name);
+            localStorage.setItem('userAvatar', users[userId].avatarURL);
+            localStorage.setItem('userId', users[userId].id);
+            console.log(users[userId].id);
             // todo: Redirect the user to the homepage
             history.push('')
             return;

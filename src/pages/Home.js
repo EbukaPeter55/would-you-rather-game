@@ -3,35 +3,71 @@ import { connect, useSelector } from 'react-redux';
 import Nav from '../components/Nav';
 import Tab from 'react-bootstrap/Tabs';
 import { PropTypes } from "prop-types";
+import { questionsById, selectAuthenticatedUser, selectUsersWithSomeInfo }
+ from '../selectors';
+ import { Link } from 'react-router-dom';
 
 
 
 
 
-const Home = ({questions}) => {
-    // const { questions } = this.props;
-    console.log(questions);
+
+const Home = ({dispatch}) => {
+    const users = useSelector(selectUsersWithSomeInfo);
+    console.log(users);
+    const authenticatedUser = useSelector(selectAuthenticatedUser);
+    console.log(authenticatedUser.id);
+    // const authId = localStorage.getItem('userId');
+    // Destructure to get unanswered and answered questions as
+    // standalone variable
+    const {unansweredQuestions, answeredQuestions} = 
+    useSelector(questionsById(authenticatedUser.id));
+    console.log(answeredQuestions);
+    console.log(unansweredQuestions);
 
 
         return (
             <section>
             <Nav/>
-            {
-             Object.keys(questions).map(question => (
-                 <li>{question}</li>
-             ))
-            }
+          
                 <div className="card card-wrap">
                 <Tab defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3 unique-tab">
                 <Tab eventKey="home" title="Unanswered questions">
-                    <div className="card inner-card">
-                    Unanswered questions
+                {
+                    unansweredQuestions.map(unansweredQue => 
+                    <div className="card inner-card" key={unansweredQue.id}>
+                        <h5>{`${users[unansweredQue.author].name} asks`}</h5>
+                        <div className="card-body-content d-flex justify-content-evenly">
+                            <img className="rounded-circle" src={users[unansweredQue.author].avatarURL} 
+                            alt="avatar"/>
+                            <div>
+                                <h6>Would you rather</h6>
+                                <p>{unansweredQue.optionOne.text}</p>
+                                <Link to={`/questions/${unansweredQue.id}`}><button>view poll</button></Link>
+                            </div>
+                        </div>
                     </div>
+                    )
+                }
+                  
                 </Tab>
                 <Tab eventKey="profile" title="Answered questions">
-                <div className="card inner-card">
-                    answered questions
-                </div>
+                {
+                    answeredQuestions.map(unansweredQue => 
+                    <div className="card inner-card" key={unansweredQue.id}>
+                        <h5>{`${users[unansweredQue.author].name} asks`}</h5>
+                        <div className="card-body-content d-flex justify-content-evenly">
+                            <img className="rounded-circle" src={users[unansweredQue.author].avatarURL} 
+                            alt="avatar"/>
+                            <div>
+                                <h6>Would you rather</h6>
+                                <p>{unansweredQue.optionOne.text}</p>
+                                <Link to={`/questions/${unansweredQue.id}`}><button>view poll</button></Link>
+                            </div>
+                        </div>
+                    </div>
+                    )
+                }
                 </Tab>
                 </Tab>
                 
@@ -40,11 +76,5 @@ const Home = ({questions}) => {
         )
 }
 
-const mapStateToProps = ({questions, users}, props) => {
-return {
-    questions,
-    users
-}
-}
 
-export default connect(mapStateToProps)(Home);
+export default connect()(Home);
