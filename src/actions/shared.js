@@ -1,10 +1,11 @@
 import { _getQuestions, _getUsers,
-     _saveQuestionAnswer } from "../utils/_DATA";
+     _saveQuestionAnswer, _saveQuestion } from "../utils/_DATA";
 import { getUsers, addAnswer } from "./users";
 import { getQuestions } from "./questions";
+import { addQuestion } from "./questions";
+import { updateQuestionUser } from "./questions";
 
 
-const AUTHED_ID = 'tylermcginnis'
 
 
 
@@ -28,7 +29,7 @@ export function handleGetQuestions () {
     }
 };
 
-// action creator Using redux thunk middleware to get Questions
+// action creator Using redux thunk middleware to save answeres 
 export function handleSaveAnswers (answer) {
     return (dispatch) => {
         return _saveQuestionAnswer(answer)
@@ -38,3 +39,13 @@ export function handleSaveAnswers (answer) {
     };
 };
 
+// action creator Using redux thunk middleware to add question
+export function handleAddQuestion ({question, authedUser}) {
+    return (dispatch) => {
+        return _saveQuestion(question)
+        .then((formattedQuestion) => {
+            dispatch(addQuestion(formattedQuestion));
+            dispatch(updateQuestionUser({authedUser: authedUser.id, question: formattedQuestion.id}));
+        });
+    };
+};

@@ -53,3 +53,15 @@ export const chooseOptionsForQuestions = (id) => createSelector(chooseQuestionBy
         return {options: [question.optionOne, question.optionTwo], 
             allVoteCount: question.optionOne.votes.length + question.optionTwo.votes.length };
     });
+
+// Select formatted users
+export const selectAlteredUsers = () => createSelector(selectEveryUsers, users => {
+const values = Object.values(users);
+const formattedUsers = values.reduce((acc, cur) => {
+    const totalScore = cur.questions.length + Object.keys(cur.answers).length;
+    cur.totalScore = totalScore;
+    acc.push(cur);
+    return acc;
+}, []);
+return formattedUsers.sort((a,b) => b.totalScore - a.totalScore);
+} );

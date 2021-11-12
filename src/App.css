@@ -62,3 +62,17 @@ section .card-main form button[type="submit"]{
   margin-left: 12%;
   margin-top: 3%;
 }
+
+/* LEADERBOARD STYLES */
+.leaderboard-card{
+  width: 40%;
+  height: 35vh;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: row wrap;
+  
+}
+.leaderboard-card img{
+  width: 4rem;
+  height: 4rem;
+}
