@@ -15,7 +15,7 @@ const users = useSelector(selectAlteredUsers());
 
             {
                 users.map(user => (
-                    <div key={user.id} className="card leaderboard-card d-flex">
+                    <div key={user.id} className="card leaderboard-card ">
                         <img className="rounded-circle" src={user.avatarURL} alt="avatar"/>
                         <div className="result">
                             <h3>{user.name}</h3>

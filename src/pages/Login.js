@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 
 
-const Login = ({dispatch, users}) => {
+const Login = ({dispatch, users}) => {    
     
     //Set the expected proptypes we want to receive to enable strict typing
     Login.propTypes = {
@@ -22,6 +22,7 @@ const Login = ({dispatch, users}) => {
 
     const [userId, setUserId] = useState("");
     const history = useHistory();
+    // const [oldUrl, setOldUrl] =  useState("/login")
 
         console.log(users);
         const optionsValue = Object.keys(users).map(id => ({
@@ -45,7 +46,7 @@ const Login = ({dispatch, users}) => {
             localStorage.setItem('userId', users[userId].id);
             console.log(users[userId].id);
             // todo: Redirect the user to the homepage
-            history.push('')
+           history.push('')
             return;
         }
             return "An error occured"

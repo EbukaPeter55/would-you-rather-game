@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { selectAuthenticatedUser } from '../selectors';
+import { resetAuthUser } from '../actions/authedUser';
 
 
 
 const Nav = ({dispatch}) => {
+
+  const authedUser = useSelector(selectAuthenticatedUser);
+  const history = useHistory();
+
+  const triggerLogout = (e) => {
+    e.preventDefault();
+    dispatch(resetAuthUser());
+    history.push("/login");
+  };
 
   // Get the authenticatedUser from localStorage
   const authenticatedUserName = localStorage.getItem('userName');
@@ -56,7 +67,9 @@ const Nav = ({dispatch}) => {
           </li>
           <li className="nav-item">
           <Link className="nav-link " style={{cursor: "pointer"}}
-          to='#'>Logout</Link>
+          to='#'
+          onClick={triggerLogout}
+          >Logout</Link>
           </li>
             </>
         }  
