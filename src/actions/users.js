@@ -1,4 +1,5 @@
-export const GET_USERS = 'GET_USERS'
+export const GET_USERS = 'GET_USERS';
+export const SAVE_ANSWER = 'SAVE_ANSWER';
 
 export function getUsers(users) {
     return {
@@ -7,5 +8,10 @@ export function getUsers(users) {
     }
 }
 
+export const addAnswer = (answer) => {
+    return {
+        type: SAVE_ANSWER,
+        payload: answer
+    }
+}
 
-{/*Our constants(types) here are our events*/}

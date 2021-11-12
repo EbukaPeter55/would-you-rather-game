@@ -1,4 +1,8 @@
+import { useHistory } from 'react-router';
 import { createSelector } from 'reselect';
+
+
+
 
 const selectEveryQuestion = state => state.questions;
 const selectEveryUsers = state => state.users;
@@ -33,3 +37,19 @@ export const selectUsersWithSomeInfo = createSelector (selectEveryUsers, (users)
     }, {});
     return alteredUsers;
 })
+
+// Select questions by Id
+export const chooseQuestionById = (id) => createSelector (selectEveryQuestion, (questions)=>{
+    const question = questions[id];
+    return question;
+});
+
+// Select users by Id
+export const chooseUserById = (id) => createSelector(selectEveryUsers, users => (users[id])); 
+
+// Select Options for a particular question
+export const chooseOptionsForQuestions = (id) => createSelector(chooseQuestionById(id),
+    question => {
+        return {options: [question.optionOne, question.optionTwo], 
+            allVoteCount: question.optionOne.votes.length + question.optionTwo.votes.length };
+    });

@@ -6,9 +6,20 @@ import { selectUsersWithSomeInfo } from '../selectors';
 import Select from 'react-select';
 import { setAuthedUser } from '../actions/authedUser';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
+
+
+
 
 
 const Login = ({dispatch, users}) => {
+    
+    //Set the expected proptypes we want to receive to enable strict typing
+    Login.propTypes = {
+    users : PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired, 
+    }
+
     const [userId, setUserId] = useState("");
     const history = useHistory();
 

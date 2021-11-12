@@ -1,5 +1,6 @@
-import { _getQuestions, _getUsers } from "../utils/_DATA";
-import { getUsers } from "./users";
+import { _getQuestions, _getUsers,
+     _saveQuestionAnswer } from "../utils/_DATA";
+import { getUsers, addAnswer } from "./users";
 import { getQuestions } from "./questions";
 
 
@@ -25,5 +26,15 @@ export function handleGetQuestions () {
             dispatch(getQuestions(questions));
         })
     }
+};
+
+// action creator Using redux thunk middleware to get Questions
+export function handleSaveAnswers (answer) {
+    return (dispatch) => {
+        return _saveQuestionAnswer(answer)
+        .then(() => {
+            dispatch(addAnswer(answer));
+        });
+    };
 };
 
