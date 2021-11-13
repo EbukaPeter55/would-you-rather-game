@@ -1,9 +1,24 @@
+/* Import css variables */
+@import "./variables.css";
+
 * {
   margin: 0;
   padding: 0;
+  font-family: var(--font-family);
 }
 
 /* NAV STYLES */
+header nav {
+  background: var(--background-color);
+  max-width: 1440px!important;
+}
+nav ul li {
+  margin-left: .8rem;
+}
+nav ul li a {
+  color: #ffff!important;
+  font-weight: 500;
+}
 li img{
   width: 2.1875rem;
   height: 2.1875rem;
@@ -34,35 +49,52 @@ li img{
   width: 4rem;
   height: 4rem;
 }
+
 /* LOGIN STYLE */
 section .card-main {
   width: 40%;
   height: 60vh;
   margin-left: 30%;
+  margin-top: 2rem;
 } 
 section .card-main img {
   width: 10rem;
   height: 6rem;
   margin: 0 auto;
 }
+section .card-main .top-heading {
+  margin-top: 1rem;
+}
+section .card-main .top-heading h5 {
+  font-weight: 600;
+}
 section .card-main h2,
 section .card-main .top-heading h5,
 section .card-main .top-heading p{
   text-align: center;
 }
-section .card-main form .form-group select {
-  min-width: 21rem;
+section .card-main form .form-group .select-field {
+  min-width: 2rem!important;
   height: 2.5rem;
-  margin-left: 12%;
+  margin-left: 5.8%;
+  margin-right: 6%;
   outline: none;
 }
 section .card-main form button[type="submit"]{
-  min-width: 21rem;
+  min-width: 24rem;
   height: 3rem;
-  margin-left: 12%;
+  margin-left: 6%;
   margin-top: 3%;
+  background: var(--background-color);
+  outline: none;
 }
-
+.option-img{
+  width: 2rem!important;
+  height: 2rem!important;
+}
+.option-name {
+  margin-left: .5rem!important;
+}
 /* LEADERBOARD STYLES */
 .leaderboard-card{
   width: 40%;

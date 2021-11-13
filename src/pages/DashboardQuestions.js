@@ -33,7 +33,6 @@ alert("Please fill the form!")
 };
         return (
             <section>
-                <Nav/>
                <div className="card">
                <div className="title">
                    <h2>Create New question</h2>

@@ -10,7 +10,6 @@ const users = useSelector(selectAlteredUsers());
 
         return (
             <section>
-            <Nav/>
             <h1>Leader board</h1>
 
             {

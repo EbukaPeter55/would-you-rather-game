@@ -28,10 +28,9 @@ const Home = ({dispatch}) => {
 
         return (
             <section>
-            <Nav/>
           
                 <div className="card card-wrap">
-                <Tab defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3 unique-tab">
+                <Tab defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3 unique-tab">
                 <Tab eventKey="home" title="Unanswered questions">
                 {
                     unansweredQuestions.map(unansweredQue => 

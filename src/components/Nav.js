@@ -24,8 +24,8 @@ const Nav = ({dispatch}) => {
   // console.log(authenticatedUser);
 
         return (
-            <header>
-            <nav className="navbar navbar-expand-lg navbar-light">
+            <header>            
+            <nav className="navbar navbar-expand-lg">
           <div className="container-fluid">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
         aria-controls="#navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@ const Nav = ({dispatch}) => {
         <div className="collapse navbar-collapse " id="navbarTogglerDemo03">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
         <li className="nav-item">
-        <Link className="nav-link active" to='/'>Home</Link>
+        <Link className="nav-link" to='/'>Home</Link>
         </li>
         {
           authedUser && 

@@ -11,7 +11,7 @@ import DashboardQuestion from './pages/DashboardQuestions';
 import DashboardPolls from './pages/DashboardPolls';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './PrivateRoute';
-
+import Nav from './components/Nav';
 
 
 
@@ -30,6 +30,7 @@ class App extends Component {
         return (
             <Router>
             <Fragment>
+            <Nav/>
         {/*<LoadingBar/>*/}
                 <div className="container">
                {/*<Nav/>*/}

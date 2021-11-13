@@ -27,8 +27,8 @@ const Login = ({dispatch, users}) => {
         console.log(users);
         const optionsValue = Object.keys(users).map(id => ({
             value: users[id].id, label:
-            <><img src={users[id].avatarURL} alt="avatar"/>
-            <span>{users[id].name}</span></>
+            <><img className="rounded-circle option-img" src={users[id].avatarURL} alt="avatar"/>
+            <span className="option-name">{users[id].name}</span></>
         }));
 
         // Our handleChange function sets the userId to the 
@@ -52,8 +52,7 @@ const Login = ({dispatch, users}) => {
             return "An error occured"
         }
         return (
-            <section>
-            <Nav/>
+            <section>            
                 <div className="card card-main">
                 <div className="top-heading">
                     <h5>Welcome to the Would you rather app</h5>
@@ -64,7 +63,7 @@ const Login = ({dispatch, users}) => {
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                    <Select name="usersValue"
+                    <Select className="select-field" name="usersValue"
                      onChange={handleChange}
                      options={optionsValue}   
                     />
