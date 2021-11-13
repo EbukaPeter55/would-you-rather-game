@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router';
 import { createSelector } from 'reselect';
 
 

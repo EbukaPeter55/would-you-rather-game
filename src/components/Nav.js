@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+import React from 'react';
+// import Navbar from 'react-bootstrap/Navbar';
 import { connect, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { selectAuthenticatedUser } from '../selectors';
@@ -9,7 +9,8 @@ import { resetAuthUser } from '../actions/authedUser';
 
 const Nav = ({dispatch}) => {
 
-  const authedUser = useSelector(selectAuthenticatedUser);
+  const authUser = useSelector(selectAuthenticatedUser);
+  console.log(authUser);
   const history = useHistory();
 
   const triggerLogout = (e) => {
@@ -19,8 +20,7 @@ const Nav = ({dispatch}) => {
   };
 
   // Get the authenticatedUser from localStorage
-  const authenticatedUserName = localStorage.getItem('userName');
-  const authenticatedUserAvatar = localStorage.getItem('userAvatar');
+  // const authenticatedUserName = localStorage.getItem('userName');
   // console.log(authenticatedUser);
 
         return (
@@ -38,32 +38,36 @@ const Nav = ({dispatch}) => {
         <Link className="nav-link active" to='/'>Home</Link>
         </li>
         {
-          authenticatedUserName && 
+          authUser && 
           <>
           <li className="nav-item">
-          <Link className="nav-link" to='/newQuestions'>New Question</Link>
+          <Link className="nav-link" to='/add'>New Question</Link>
           </li>
           <li className="nav-item">
-          <Link className="nav-link" to='/newQuestions'>New Question</Link>
+          <Link className="nav-link" to='/add'>New Question</Link>
           </li>
           </>
         }     
-        <li className="nav-item">
-        <Link className="nav-link " to='/leaderboard'>Leaderboard</Link>
-        </li>
+
+        { authUser &&
+          <li className="nav-item">
+          <Link className="nav-link " to='/leaderboard'>Leaderboard</Link>
+          </li>
+        }
+       
         {/* Only render the greeting when authenticated */}
         {
-          authenticatedUserName &&
+          authUser &&
           <li className="nav-item">
-        <Link className="nav-link " to="#">Hello {authenticatedUserName}!</Link>
+        <Link className="nav-link " to="#">Hello {authUser}!</Link>
         </li>
         }
         
         {
-          authenticatedUserAvatar &&
+          authUser &&
           <>
           <li className="nav-item">        
-            <img className="rounded-circle" src={authenticatedUserAvatar} alt="avatarImage"/>
+            <img className="rounded-circle" src={authUser.avatarURL} alt="avatarImage"/>
           </li>
           <li className="nav-item">
           <Link className="nav-link " style={{cursor: "pointer"}}

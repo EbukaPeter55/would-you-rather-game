@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Leaderboard from './pages/Leaderboard';
 import DashboardQuestion from './pages/DashboardQuestions';
 import DashboardPolls from './pages/DashboardPolls';
+import NotFound from './pages/NotFound';
+
 
 
 
@@ -37,8 +39,9 @@ class App extends Component {
                 <Route path='/' exact component={Home} />
                 <Route path='/login' exact component={Login} />
                 <Route path='/leaderboard' exact component={Leaderboard} /> 
-                <Route path='/newQuestions' exact component={DashboardQuestion}/>
+                <Route path='/add' exact component={DashboardQuestion}/>
                 <Route path='/questions/:id'  component={DashboardPolls}/>
+                <Route path='/NotFound' component={NotFound}/>
                 </div>
               
                 </div>
