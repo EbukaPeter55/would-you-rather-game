@@ -10,6 +10,7 @@ import Leaderboard from './pages/Leaderboard';
 import DashboardQuestion from './pages/DashboardQuestions';
 import DashboardPolls from './pages/DashboardPolls';
 import NotFound from './pages/NotFound';
+import PrivateRoute from './PrivateRoute';
 
 
 
@@ -36,14 +37,25 @@ class App extends Component {
               the dashboard*/}
              
                 <div>
-                <Route path='/' exact component={Home} />
+                {/* Wrap component that can only be accessed 
+                by authenticated users with PrivateRoute */}
+                <PrivateRoute exact  path='/'>
+                <Home/>
+                </PrivateRoute>
+                <PrivateRoute exact  path='/leaderboard'>
+                <Leaderboard/>
+                </PrivateRoute>
+                <PrivateRoute exact  path='/add'>
+                <DashboardQuestion/>
+                </PrivateRoute>
+                <PrivateRoute exact  path='/questions/:id'>
+                <DashboardPolls/>
+                </PrivateRoute>
                 <Route path='/login' exact component={Login} />
-                <Route path='/leaderboard' exact component={Leaderboard} /> 
-                <Route path='/add' exact component={DashboardQuestion}/>
-                <Route path='/questions/:id'  component={DashboardPolls}/>
                 <Route path='/NotFound' component={NotFound}/>
                 </div>
-              
+                <Route path='*'
+                Redirect={Login}/>
                 </div>
                 </Fragment>          
              </Router>

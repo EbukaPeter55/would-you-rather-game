@@ -16,6 +16,7 @@ const Home = ({dispatch}) => {
     const users = useSelector(selectUsersWithSomeInfo);
     console.log(users);
     const authenticatedUser = useSelector(selectAuthenticatedUser);
+    // console.log(authenticatedUser);
     // const authId = localStorage.getItem('userId');
     // Destructure to get unanswered and answered questions as
     // standalone variable
