@@ -41,11 +41,8 @@ const Nav = ({dispatch}) => {
           authedUser && 
           <>
           <li className="nav-item">
-          <Link className="nav-link" to='/newQuestions'>New Question</Link>
-          </li>
-          <li className="nav-item">
-          <Link className="nav-link" to='/newQuestions'>New Question</Link>
-          </li>
+          <Link className="nav-link" to='/add'>New Question</Link>
+          </li>        
           </>
         }     
         {

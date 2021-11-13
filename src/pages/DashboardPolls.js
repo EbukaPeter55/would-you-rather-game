@@ -12,7 +12,7 @@ const DashboardPolls = ({ dispatch }) => {
 
 const { id } = useParams();
 const question = useSelector(chooseQuestionById(id));
-
+// if(!question) return <Redirect to="/NotFound"/>; 
 const asked = useSelector(chooseUserById(question.author)); 
 const {options,  allVoteCount} = useSelector(chooseOptionsForQuestions(id));
 const author = useSelector(selectAuthenticatedUser);
@@ -95,7 +95,7 @@ const handleSubmit = (e) => {
                                      options.map((option, id) => {
                                         const percentage = (option.votes.length/allVoteCount * 100).toFixed(2);
                                         return (
-                                             <div>
+                                             <div key={option.id}>
                                                  {option.votes.includes(author.id) && <span>Your vote:</span>}
                                                  <p>Would you rather {option.text}?</p>
                                                  <div className="progress-bar">
