@@ -36,13 +36,14 @@ const Home = ({dispatch}) => {
                     unansweredQuestions.map(unansweredQue => 
                     <div className="card inner-card" key={unansweredQue.id}>
                         <h5>{`${users[unansweredQue.author].name} asks`}</h5>
+                        <hr className="horizontal-line"/>
                         <div className="card-body-content d-flex justify-content-evenly">
                             <img className="rounded-circle" src={users[unansweredQue.author].avatarURL} 
                             alt="avatar"/>
                             <div>
                                 <h6>Would you rather</h6>
                                 <p>{unansweredQue.optionOne.text}</p>
-                                <Link to={`/questions/${unansweredQue.id}`}><button>view poll</button></Link>
+                                <Link to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
                             </div>
                         </div>
                     </div>
@@ -55,13 +56,14 @@ const Home = ({dispatch}) => {
                     answeredQuestions.map(unansweredQue => 
                     <div className="card inner-card" key={unansweredQue.id}>
                         <h5>{`${users[unansweredQue.author].name} asks`}</h5>
+                        <hr className="horizontal-line"/>
                         <div className="card-body-content d-flex justify-content-evenly">
                             <img className="rounded-circle" src={users[unansweredQue.author].avatarURL} 
                             alt="avatar"/>
                             <div>
                                 <h6>Would you rather</h6>
                                 <p>{unansweredQue.optionOne.text}</p>
-                                <Link to={`/questions/${unansweredQue.id}`}><button>view poll</button></Link>
+                                <Link to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
                             </div>
                         </div>
                     </div>

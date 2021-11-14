@@ -33,11 +33,11 @@ alert("Please fill the form!")
 };
         return (
             <section>
-               <div className="card">
-               <div className="title">
+               <div className="card question-card">
+               <div className="title text-center">
                    <h2>Create New question</h2>
                </div>
-               <hr/>
+               <hr className="question-line"/>
                <h6>Complete the question</h6>
                <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -49,7 +49,7 @@ alert("Please fill the form!")
                     placeholder="Enter Option one text here"    
                     />
                 </div>
-                OR
+                <p className="text-center">OR</p>
                 <div className="form-group">
                     <input 
                     type="text"

@@ -40,18 +40,15 @@ const handleSubmit = (e) => {
     return (
         <>
         <section>
-        <Nav/>
-
         <h1>Poll</h1>
-        <div className="card card-wrap">
-        <div><h5>{!isAnswered ? `${asked.name} asks:` : `Asked by ${asked.name}`}</h5></div>
-        
-            
-                    <div className="inner-card">
+        <div className="card-wrap">            
+                    <div className=" card inner-card poll-card">
+                    <h5 className="poll-ask-by">{!isAnswered ? `${asked.name} asks:` : `Asked by ${asked.name}`}</h5>
+                    <hr className="horizontal-line"/>
                         <div className="card-body-content d-flex justify-content-evenly">
                             <img className="rounded-circle" src={author.avatarURL} 
                             alt="avatar"/>
-                        <div>
+                        <div className="card-content-right">
                             {
                                 !isAnswered ?
                                 <>
@@ -83,28 +80,32 @@ const handleSubmit = (e) => {
                                 {question.optionTwo.text}
                                 </label>
                                 </div>
-                                <button type="submit">Submit</button>
+                                <button type="submit">Vote</button>
                                 </form>
                                 </>
                                 
                                  : 
 
-                                 <div className="card card-wrap">
+                                 <div className="card-result">
                                  <h3>Results:</h3>
                                  {
                                      options.map((option, id) => {
                                         const percentage = (option.votes.length/allVoteCount * 100).toFixed(2);
                                         return (
-                                             <div key={option.id}>
-                                                 {option.votes.includes(author.id) && <span>Your vote:</span>}
+                                             <div className="card card-result-sub" key={option.id}>
+                                                 {option.votes.includes(author.id) && 
+                                                 <span>Your vote:</span>
+                                                 }
                                                  <p>Would you rather {option.text}?</p>
                                                  <div className="progress-bar">
                                                      <div className="percentage" 
-                                                     style={{height: "25px", width: `${percentage}`}}>
+                                                     style={{height: "25px", 
+                                                     background: "lightblue",
+                                                     width: `${percentage}`}}>
                                                          {percentage}%
                                                      </div>
                                                  </div>
-                                                 <span>{option.votes.length} out of {allVoteCount} votes</span>
+                                                 <span className="vote-score">{option.votes.length} out of {allVoteCount} votes</span>
                                              </div>   
                                         );
                                      })
