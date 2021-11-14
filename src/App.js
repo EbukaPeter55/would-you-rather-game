@@ -12,6 +12,7 @@ import DashboardPolls from './pages/DashboardPolls';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './PrivateRoute';
 import Nav from './components/Nav';
+// import LoadingBar from 'react-redux-loading';
 
 
 
@@ -30,6 +31,7 @@ class App extends Component {
         return (
             <Router>
             <Fragment>
+      {/* <LoadingBar/> */}
             <Nav/>
         {/*<LoadingBar/>*/}
                 <div className="container">

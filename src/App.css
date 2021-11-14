@@ -55,6 +55,8 @@ li img{
 .inner-card .card-body-content img {
   width: 5rem;
   height: 5rem;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .inner-card .card-body-content div h6 {
   font-weight: 590;
@@ -249,5 +251,13 @@ section .question-card form p{
   margin-left: 2.5rem;
 }
 .leaderboard-card .score h5{
+  margin-top: .1rem;
   font-weight: 600;
+}
+.leaderboard-card .score {
+  margin-right: 1rem;
+  height: 25vh;
+}
+.leaderboard-card .score span {
+  margin-top: 2rem;
 }

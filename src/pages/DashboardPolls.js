@@ -27,9 +27,12 @@ useEffect(() => {
      setIsAnswered(true);
  }
 });
+const [disable, setDisable] = React.useState(true);
+
 
 const handleSubmit = (e) => {
  e.preventDefault();
+
  dispatch(handleSaveAnswers({authedUser: author.id, qid: question.id, 
     answer: currentRadioButtonval}));
  dispatch(voteForQuestion({authedUser: author.id, qid: id,
@@ -60,7 +63,10 @@ const handleSubmit = (e) => {
                                     type="radio"
                                     name="option"
                                     value="optionOne"
-                                    onChange={e => setCurrentValue(e.target.value)}
+                                    onChange={e => setCurrentValue(
+                                        e.target.value,
+                                        setDisable(false)
+                                        )}
                                     defaultChecked={currentRadioButtonval === question.optionOne.text}
                                 />
                                 &nbsp;
@@ -73,14 +79,15 @@ const handleSubmit = (e) => {
                                     type="radio"
                                     name="option"
                                     value="optionTwo"
-                                    onChange={e => setCurrentValue(e.target.value)}
+                                    onChange={e => setCurrentValue(e.target.value,
+                                        setDisable(false))}
                                     defaultChecked={currentRadioButtonval === question.optionOne.text}
                                 />
                                 &nbsp;
                                 {question.optionTwo.text}
                                 </label>
                                 </div>
-                                <button type="submit">Vote</button>
+                                <button disabled={disable} type="submit">Vote</button>
                                 </form>
                                 </>
                                 
@@ -91,8 +98,9 @@ const handleSubmit = (e) => {
                                  {
                                      options.map((option, id) => {
                                         const percentage = (option.votes.length/allVoteCount * 100).toFixed(2);
+                                        {/* console.log(id); */}
                                         return (
-                                             <div className="card card-result-sub" key={option.id}>
+                                             <div className="card card-result-sub" key={id}>
                                                  {option.votes.includes(author.id) && 
                                                  <span>Your vote:</span>
                                                  }

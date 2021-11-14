@@ -28,8 +28,9 @@ const users = useSelector(selectAlteredUsers());
                              </div>
                         </div>
                         <div className="score card">
-                        <h5>Score</h5>
-                        <span>{user.totalScore}</span>
+                        <h5 className="text-center">Score</h5>
+                        <hr className="score-line"/>
+                        <span className="text-center">{user.totalScore}</span>
                         </div>
                         
                     </div>
