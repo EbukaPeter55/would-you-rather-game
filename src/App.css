@@ -145,7 +145,8 @@ section .card-main form button[type="submit"]{
 }
 .card-result .card-result-sub .progress-bar{
   background: lightgrey;
-  width: 80%;
+  width: 200px;
+  /* border: black; */
   margin-left: .5rem;
   border-radius: 4px;
 }

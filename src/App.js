@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import './App.css';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect, useSelector } from 'react-redux';
+import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import { handleGetUsers } from './actions/shared';
 import { handleGetQuestions } from './actions/shared';
 import Home from './pages/Home';
@@ -12,34 +12,35 @@ import DashboardPolls from './pages/DashboardPolls';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './PrivateRoute';
 import Nav from './components/Nav';
-// import LoadingBar from 'react-redux-loading';
+import LoadingBar from 'react-redux-loading';
 
 
 
-class App extends Component {
+const App = (props) => {
 
     // Upon creation of the Component, dispatch 
     // the handleGetUsers and handleGetQuestions
     //  to fetch the users and questions
-    componentDidMount () {
-    this.props.dispatch(handleGetUsers());
-    this.props.dispatch(handleGetQuestions());
+    useEffect(()=> {
+        const {dispatch} = props;
+        dispatch(handleGetUsers());
+        dispatch(handleGetQuestions());
+    }, [props]
+    );
 
-    }
-
-    render() {
         return (
             <Router>
             <Fragment>
-      {/* <LoadingBar/> */}
             <Nav/>
+      <LoadingBar/>
+
         {/*<LoadingBar/>*/}
                 <div className="container">
                {/*<Nav/>*/}
               {/* If authedUser is null, display null, else render 
               the dashboard*/}
              
-                <div>
+                <Switch>
                 {/* Wrap component that can only be accessed 
                 by authenticated users with PrivateRoute */}
                 <PrivateRoute exact  path='/'>
@@ -55,15 +56,16 @@ class App extends Component {
                 <DashboardPolls/>
                 </PrivateRoute>
                 <Route path='/login' exact component={Login} />
-                <Route path='/NotFound' component={NotFound}/>
-                </div>
+                <Route path='/NotFound' exact component={NotFound}/>
                 <Route path='*'
-                Redirect={Login}/>
+                Redirect exact component={NotFound}/>
+                </Switch>
                 </div>
+               
                 </Fragment>          
              </Router>
         )
-    }
+    
 }
 
 function mapStateToProps () {
@@ -72,4 +74,4 @@ function mapStateToProps () {
     }
     }
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);

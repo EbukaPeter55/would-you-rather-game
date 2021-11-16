@@ -11,8 +11,9 @@ import { chooseQuestionById, chooseUserById, selectAuthenticatedUser, chooseOpti
 const DashboardPolls = ({ dispatch }) => {
 
 const { id } = useParams();
+console.log(id);
 const question = useSelector(chooseQuestionById(id));
-// if(!question) return <Redirect to="/NotFound"/>; 
+console.log(question);
 const asked = useSelector(chooseUserById(question.author)); 
 const {options,  allVoteCount} = useSelector(chooseOptionsForQuestions(id));
 const author = useSelector(selectAuthenticatedUser);
@@ -26,6 +27,12 @@ useEffect(() => {
  if(allVotes.includes(author.id)){
      setIsAnswered(true);
  }
+});
+
+useEffect(() => {
+    // console.log(question);
+    if(!question) return <Redirect to="/NotFound"/>;
+   
 });
 const [disable, setDisable] = React.useState(true);
 
