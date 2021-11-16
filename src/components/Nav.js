@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+// import Navbar from 'react-bootstrap/Navbar';
 import { connect, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { selectAuthenticatedUser } from '../selectors';
 import { resetAuthUser } from '../actions/authedUser';
+import { PropTypes } from "prop-types";
 
 
 
 const Nav = ({dispatch}) => {
 
+  // Specify the expected type expected to enable strict typing
+  Nav.propTypes = {
+    dispatch: PropTypes.func
+  }
   const authedUser = useSelector(selectAuthenticatedUser);
   const history = useHistory();
 
@@ -35,7 +40,7 @@ const Nav = ({dispatch}) => {
         <div className="collapse navbar-collapse " id="navbarTogglerDemo03">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
         <li className="nav-item">
-        <Link className="nav-link" to='/'>Home</Link>
+        <Link className="nav-link"  to='/'>Home</Link>
         </li>
         {
           authedUser && 

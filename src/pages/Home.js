@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect, useSelector } from 'react-redux';
-import Nav from '../components/Nav';
 import Tab from 'react-bootstrap/Tabs';
 import { PropTypes } from "prop-types";
 import { questionsById, selectAuthenticatedUser, selectUsersWithSomeInfo }
@@ -13,6 +12,10 @@ import { questionsById, selectAuthenticatedUser, selectUsersWithSomeInfo }
 
 
 const Home = ({dispatch}) => {
+  // Specify the expected type expected to enable strict typing
+//   Home.propTypes = {
+//     dispatch: PropTypes.func
+//   }
     const users = useSelector(selectUsersWithSomeInfo);
     console.log(users);
     const authenticatedUser = useSelector(selectAuthenticatedUser);

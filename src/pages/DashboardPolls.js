@@ -109,13 +109,13 @@ const handleSubmit = (e) => {
                                         return (
                                              <div className="card card-result-sub" key={id}>
                                                  {option.votes.includes(author.id) && 
-                                                 <span>Your vote:</span>
+                                                 <span className="your-vote">Your vote</span>
                                                  }
                                                  <p>Would you rather {option.text}?</p>
                                                  <div className="progress-bar">
                                                      <div className="percentage" 
                                                      style={{height: "25px", 
-                                                     background: "lightblue",
+                                                     background: "#422EA6",
                                                      width: `${percentage}`}}>
                                                          {percentage}%
                                                      </div>
