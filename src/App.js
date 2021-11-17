@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 import PrivateRoute from './PrivateRoute';
 import Nav from './components/Nav';
 import LoadingBar from 'react-redux-loading';
+import Poll from './pages/Poll';
 
 
 
@@ -52,13 +53,25 @@ const App = (props) => {
                 <PrivateRoute exact  path='/add'>
                 <DashboardQuestion/>
                 </PrivateRoute>
-                <PrivateRoute exact  path='/questions/:id'>
+                <PrivateRoute path='/questions/:id'>
                 <DashboardPolls/>
                 </PrivateRoute>
-                <Route path='/login' exact component={Login} />
-                <Route path='/NotFound' exact component={NotFound}/>
-                <Route path='*'
-                Redirect exact component={NotFound}/>
+                <Route exact  path='/login'>
+                <Login/>
+                </Route>
+                <Route exact  path='/poll'>
+                <Poll/>
+                </Route>
+                <Route path='/NotFound'>
+                <NotFound/>
+                </Route>
+                <Route exact path='*'>
+                <NotFound/>
+                </Route>
+                {/* <Route path='/login' exact component={Login} /> */}
+                {/* <Route path='/NotFound' exact component={NotFound}/> */}
+                {/* <Route path='*'
+                Redirect exact component={NotFound}/> */}
                 </Switch>
                 </div>
                

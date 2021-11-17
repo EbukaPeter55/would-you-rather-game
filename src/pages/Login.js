@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../components/Nav';
 import Logo from '../assets/images/reactjs.jpeg';
@@ -20,11 +20,18 @@ const Login = ({dispatch, users}) => {
     dispatch: PropTypes.func.isRequired, 
     }
 
+   
     const [userId, setUserId] = useState("");
+    const [oldUrl, setOldUrl] =  useState("");
     const history = useHistory();
-    // const [oldUrl, setOldUrl] =  useState("/login")
 
-        console.log(users);
+
+        // console.log(users);
+        useEffect(()=> {
+            history.location.state && setOldUrl(history.location.state.from.pathname);
+        }, []);
+
+
         const optionsValue = Object.keys(users).map(id => ({
             value: users[id].id, label:
             <><img className="rounded-circle option-img" src={users[id].avatarURL} alt="avatar"/>
@@ -45,11 +52,12 @@ const Login = ({dispatch, users}) => {
             localStorage.setItem('userAvatar', users[userId].avatarURL);
             localStorage.setItem('userId', users[userId].id);
             console.log(users[userId].id);
-            // todo: Redirect the user to the homepage
-           history.push('')
+            // if old url is set to the pathname, redirect to that
+            // path else redirects to the home page
+            oldUrl ? history.push(oldUrl) : history.push("/");
             return;
         }
-            return "An error occured"
+            return alert("An error occured");
         }
         return (
             <section>            

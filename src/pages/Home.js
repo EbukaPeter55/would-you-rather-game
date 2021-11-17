@@ -46,7 +46,8 @@ const Home = ({dispatch}) => {
                             <div>
                                 <h6>Would you rather</h6>
                                 <p>{unansweredQue.optionOne.text}</p>
-                                <Link to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
+                                <Link
+                                 to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
                             </div>
                         </div>
                     </div>
@@ -66,6 +67,7 @@ const Home = ({dispatch}) => {
                             <div>
                                 <h6>Would you rather</h6>
                                 <p>{unansweredQue.optionOne.text}</p>
+                                {/* <Link to="/poll"><button type="button">view poll</button></Link> */}
                                 <Link to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
                             </div>
                         </div>
