@@ -91,45 +91,45 @@ const Poll = ({dispatch, question}) => {
                                 </form>
                                 </>
                                 
-                                 : 
-    
-                                 <div className="card-result">
-                                 <h3>Results:</h3>
-                                 {
-                                     options.map((option, id) => {
+                                    : 
+
+                                    <div className="card-result">
+                                    <h3>Results:</h3>
+                                    {
+                                        options.map((option, id) => {
                                         const percentage = (option.votes.length/allVoteCount * 100).toFixed(2);
                                         {/* console.log(id); */}
                                         return (
-                                             <div className="card card-result-sub" key={id}>
-                                                 {option.votes.includes(author.id) && 
-                                                 <span className="your-vote">Your vote</span>
-                                                 }
-                                                 <p>Would you rather {option.text}?</p>
-                                                 <div className="progress-bar"                                                >
-                                                     <span className="percentage" 
-                                                     style={{height: "25px", 
-                                                     background: "#422EA6",
-                                                     width: `${percentage}%`}}>
-                                                         {percentage}%
-                                                     </span>
-                                                 </div>
-                                                 <span className="vote-score">{option.votes.length} out of {allVoteCount} votes</span>
-                                             </div>   
+                                                <div className="card card-result-sub" key={id}>
+                                                    {option.votes.includes(author.id) && 
+                                                    <span className="your-vote">Your vote</span>
+                                                    }
+                                                    <p>Would you rather {option.text}?</p>
+                                                    <div className="progress-bar"                                                >
+                                                        <span className="percentage" 
+                                                        style={{height: "25px", 
+                                                        background: "#422EA6",
+                                                        width: `${percentage}%`}}>
+                                                            {percentage}%
+                                                        </span>
+                                                    </div>
+                                                    <span className="vote-score">{option.votes.length} out of {allVoteCount} votes</span>
+                                                </div>   
                                         );
-                                     })
-                                 }
-    
-                                 </div>
+                                        })
+                                    }
+
+                                    </div>
                             }
                         </div>                              
                         </div>
                     </div>
                     
         
-                  
+                    
                 
         </div>
-    
+
         </section>
         </>
 

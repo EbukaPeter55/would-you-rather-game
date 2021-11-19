@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Nav from '../components/Nav';
 import Logo from '../assets/images/reactjs.jpeg';
 import { selectUsersWithSomeInfo } from '../selectors';
 import Select from 'react-select';

@@ -14,14 +14,13 @@ import AnsweredQuestions from '../components/AnsweredQuestions';
 
 const Home = ({dispatch}) => {
   // Specify the expected type expected to enable strict typing
-//   Home.propTypes = {
-//     dispatch: PropTypes.func
-//   }
+  Home.propTypes = {
+    dispatch: PropTypes.func
+  }
     const users = useSelector(selectUsersWithSomeInfo);
     console.log(users);
     const authenticatedUser = useSelector(selectAuthenticatedUser);
     // console.log(authenticatedUser);
-    // const authId = localStorage.getItem('userId');
     // Destructure to get unanswered and answered questions as
     // standalone variable
     const {unansweredQuestions, answeredQuestions} = 

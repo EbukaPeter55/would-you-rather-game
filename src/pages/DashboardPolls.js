@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Nav from '../components/Nav';
 import { useParams, Redirect } from "react-router-dom";
 import { connect, useSelector } from 'react-redux';
 import { chooseQuestionById } from '../selectors';
@@ -15,6 +14,7 @@ console.log(question);
 if(!question) return <Redirect to="/NotFound"/>;
 return (
     <div>
+        {/* Polls component */}
         <Poll
             question={question}
         />

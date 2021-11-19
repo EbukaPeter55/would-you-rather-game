@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { connect, useSelector } from 'react-redux';
-import Nav from '../components/Nav';
 import { useHistory } from 'react-router-dom';
 import { selectAuthenticatedUser } from '../selectors';
 import { handleAddQuestion } from '../actions/shared';
@@ -27,7 +26,6 @@ if(optionOneText && optionTwoText) {
     optionTwoRef.current.value = "";
     return history.push('/');
 }
-// todo: Use an error message below the form instead of an alert
 alert("Please fill the form!")
 
 };
