@@ -57,7 +57,7 @@ const Login = ({dispatch, users}) => {
             oldUrl ? history.push(oldUrl) : history.push("/");
             return;
         }
-            return alert("An error occured");
+            return alert("Select a login user");
         }
         return (
             <section>            
@@ -72,6 +72,7 @@ const Login = ({dispatch, users}) => {
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                     <Select className="select-field" name="usersValue"
+                    required
                      onChange={handleChange}
                      options={optionsValue}   
                     />

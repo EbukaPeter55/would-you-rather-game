@@ -5,7 +5,8 @@ import { PropTypes } from "prop-types";
 import { questionsById, selectAuthenticatedUser, selectUsersWithSomeInfo }
  from '../selectors';
  import { Link } from 'react-router-dom';
-
+import UnansweredQuestions from '../components/UnansweredQuestions';
+import AnsweredQuestions from '../components/AnsweredQuestions';
 
 
 
@@ -35,45 +36,20 @@ const Home = ({dispatch}) => {
                 <div className="card card-wrap">
                 <Tab defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3 unique-tab">
                 <Tab eventKey="home" title="Unanswered questions">
-                {
-                    unansweredQuestions.map(unansweredQue => 
-                    <div className="card inner-card" key={unansweredQue.id}>
-                        <h5>{`${users[unansweredQue.author].name} asks`}</h5>
-                        <hr className="horizontal-line"/>
-                        <div className="card-body-content d-flex justify-content-evenly">
-                            <img className="rounded-circle" src={users[unansweredQue.author].avatarURL} 
-                            alt="avatar"/>
-                            <div>
-                                <h6>Would you rather</h6>
-                                <p>{unansweredQue.optionOne.text}</p>
-                                <Link
-                                 to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    )
-                }
-                  
+               
+                {/* Unanswered questions */}
+                <UnansweredQuestions
+                    unansweredQuestions={unansweredQuestions}
+                    users={users}
+                />                     
                 </Tab>
                 <Tab eventKey="profile" title="Answered questions">
-                {
-                    answeredQuestions.map(unansweredQue => 
-                    <div className="card inner-card" key={unansweredQue.id}>
-                        <h5>{`${users[unansweredQue.author].name} asks`}</h5>
-                        <hr className="horizontal-line"/>
-                        <div className="card-body-content d-flex justify-content-evenly">
-                            <img className="rounded-circle" src={users[unansweredQue.author].avatarURL} 
-                            alt="avatar"/>
-                            <div>
-                                <h6>Would you rather</h6>
-                                <p>{unansweredQue.optionOne.text}</p>
-                                {/* <Link to="/poll"><button type="button">view poll</button></Link> */}
-                                <Link to={`/questions/${unansweredQue.id}`}><button type="button">view poll</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    )
-                }
+                {/* Answered questions */}
+                <AnsweredQuestions
+                    answeredQuestions={answeredQuestions}
+                    users={users}
+                />
+                
                 </Tab>
                 </Tab>
                 

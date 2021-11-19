@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useParams, Redirect } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect, useSelector } from 'react-redux';
 import { handleSaveAnswers } from '../actions/shared';
 import { voteForQuestion } from '../actions/questions';
@@ -12,15 +12,15 @@ const Poll = ({dispatch, question}) => {
     const asked = useSelector(chooseUserById(question.author)); 
     const {options,  allVoteCount} = useSelector(chooseOptionsForQuestions(id));
     const author = useSelector(selectAuthenticatedUser);
-    const [currentRadioButtonval, setCurrentValue] = useState(null);
+    const [RadioButtonVal, setCurrentValue] = useState(null);
     const [isAnswered, setIsAnswered] = useState(false);
-    const allVotes = options.reduce((acc, cur) => {
+    const totalVotes = options.reduce((acc, cur) => {
         return acc.concat(cur.votes)
     }, []);
 
 
         useEffect(() => {
-    if(allVotes.includes(author.id)){
+    if(totalVotes.includes(author.id)){
         setIsAnswered(true);
     }
     });
@@ -30,9 +30,9 @@ const Poll = ({dispatch, question}) => {
      e.preventDefault();
 
      dispatch(handleSaveAnswers({authedUser: author.id, qid: question.id, 
-        answer: currentRadioButtonval}));
+        answer: RadioButtonVal}));
      dispatch(voteForQuestion({authedUser: author.id, qid: id,
-         answer: currentRadioButtonval}));
+         answer: RadioButtonVal}));
     };
 
 
@@ -53,6 +53,7 @@ const Poll = ({dispatch, question}) => {
                         <div className="card-content-right">
                             {
                                 !isAnswered ?
+                                
                                 <>
                                 <h6>Would you rather</h6>
                                 <form onSubmit={handleSubmit}>
@@ -66,7 +67,7 @@ const Poll = ({dispatch, question}) => {
                                         e.target.value,
                                         setDisable(false)
                                         )}
-                                    defaultChecked={currentRadioButtonval === question.optionOne.text}
+                                    defaultChecked={RadioButtonVal === question.optionOne.text}
                                 />
                                 &nbsp;
                                 {question.optionOne.text}
@@ -80,7 +81,7 @@ const Poll = ({dispatch, question}) => {
                                     value="optionTwo"
                                     onChange={e => setCurrentValue(e.target.value,
                                         setDisable(false))}
-                                    defaultChecked={currentRadioButtonval === question.optionOne.text}
+                                    defaultChecked={RadioButtonVal === question.optionOne.text}
                                 />
                                 &nbsp;
                                 {question.optionTwo.text}
@@ -104,13 +105,13 @@ const Poll = ({dispatch, question}) => {
                                                  <span className="your-vote">Your vote</span>
                                                  }
                                                  <p>Would you rather {option.text}?</p>
-                                                 <div className="progress-bar">
-                                                     <div className="percentage" 
+                                                 <div className="progress-bar"                                                >
+                                                     <span className="percentage" 
                                                      style={{height: "25px", 
                                                      background: "#422EA6",
-                                                     width: `${percentage}`}}>
+                                                     width: `${percentage}%`}}>
                                                          {percentage}%
-                                                     </div>
+                                                     </span>
                                                  </div>
                                                  <span className="vote-score">{option.votes.length} out of {allVoteCount} votes</span>
                                              </div>   
@@ -120,10 +121,7 @@ const Poll = ({dispatch, question}) => {
     
                                  </div>
                             }
-                        </div>
-                                {/* <h6>Would you rather</h6>
-                                <p>{unansweredQue.optionOne.text}</p>
-                                <Link to={`/questions/${unansweredQue.id}`}><button>view poll</button></Link> */}
+                        </div>                              
                         </div>
                     </div>
                     
@@ -135,9 +133,6 @@ const Poll = ({dispatch, question}) => {
         </section>
         </>
 
-    //     <div>
-    // <h1>Working poll</h1>
-    //     </div>
     )
 }
 

@@ -160,7 +160,7 @@ section .card-main form button[type="submit"]{
   max-width: 250px;
   height: auto;
   margin-top: 3.5%;
-  padding: 1rem 0;
+  padding: 1rem;
   position: relative;
 }
 .card-result .card-result-sub .your-vote{
@@ -178,8 +178,8 @@ section .card-main form button[type="submit"]{
 }
 .card-result .card-result-sub .progress-bar{
   background: lightgrey;
-  width: 200px;
-  /* border: black; */
+  /* width: 200px; */
+  border: black;
   margin-left: .5rem;
   border-radius: 4px;
 }
